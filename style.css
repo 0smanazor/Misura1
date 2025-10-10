@@ -1,0 +1,70 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+body {
+  background-image: url('arka_plan.svg');
+  background-size: cover;       /* tüm ekranı kapla */
+  background-position: center;  /* ortala */
+  background-repeat: no-repeat; /* tekrarlama */
+  background-attachment: fixed; /* sabitle (sayfa kayarken hareket etmez) */
+
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+
+
+.container {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  text-align: center;
+}
+
+
+h1 {
+  color: #222;
+  margin-bottom: 5px;
+}
+
+h2 {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+button {
+  background: #1e40af;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.3s;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2563eb;
+  transform: scale(1.05);
+}
+
+
+#result {
+  margin-top: 15px;
+  font-weight: bold;
+}

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misura - Evrensel Ölçü Birimi Çevirici</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>MISURA</h1>
+    <h2>Evrensel Ölçü Birimi Çevirici</h2>
+
+    <label for="category">Kategori Seç:</label>
+    <select id="category">
+      <option value="length">Uzunluk</option>
+      <option value="mass">Kütle</option>
+      <option value="volume">Hacim</option>
+      <option value="area">Alan</option>
+      <option value="time">Zaman</option>
+    </select>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1e40af">
+
+<!-- iOS için özel -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+
+    <div class="input-row">
+      <input type="number" id="value" placeholder="Değer girin">
+      <select id="from"><option value="">Nereden</option></select>
+<select id="to"><option value="">Nereye</option></select>
+
+    </div>
+
+    <button id="convert">Çevir</button>
+    <p id="result"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js');
+    });
+  }
+</script>
