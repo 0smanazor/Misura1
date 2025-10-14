@@ -5,17 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Misura - Evrensel Ölçü Birimi Çevirici</title>
 
-  <!-- Uygulama Teması ve Manifest -->
+  <!-- 🌐 Uygulama Teması ve Manifest -->
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#1e40af">
 
-  <!-- iOS Uygulama Ayarları -->
+  <!-- 📱 iOS Uygulama Ayarları -->
   <link rel="apple-touch-icon" href="icon_192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="icon_512.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Misura">
 
-  <!-- Stil Dosyası -->
+  <!-- 💻 Web Favicon ve Sosyal Paylaşım Desteği -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icon_192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="icon_512.png">
+  <meta property="og:title" content="Misura - Evrensel Ölçü Birimi Çevirici">
+  <meta property="og:description" content="Tüm ölçü birimlerini kolayca çevirin. Misura ile evrensel birim çevirici!">
+  <meta property="og:image" content="icon_512.png">
+  <meta property="og:type" content="website">
+
+  <!-- 🎨 Stil Dosyası -->
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -43,8 +52,10 @@
     <p id="result"></p>
   </div>
 
+  <!-- ⚙️ Script -->
   <script src="script.js"></script>
 
+  <!-- 🔁 Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
