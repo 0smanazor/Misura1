@@ -1,11 +1,24 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Misura - Evrensel Ölçü Birimi Çevirici</title>
+
+  <!-- Uygulama Teması ve Manifest -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1e40af">
+
+  <!-- iOS Uygulama Ayarları -->
+  <link rel="apple-touch-icon" href="icon_192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Misura">
+
+  <!-- Stil Dosyası -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="container">
     <h1>MISURA</h1>
@@ -19,21 +32,11 @@
       <option value="area">Alan</option>
       <option value="time">Zaman</option>
     </select>
-<link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#1e40af">
-
-<!-- iOS app icon -->
-<link rel="apple-touch-icon" href="icons/icon-192.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Misura">
-
 
     <div class="input-row">
       <input type="number" id="value" placeholder="Değer girin">
       <select id="from"><option value="">Nereden</option></select>
-<select id="to"><option value="">Nereye</option></select>
-
+      <select id="to"><option value="">Nereye</option></select>
     </div>
 
     <button id="convert">Çevir</button>
@@ -41,12 +44,13 @@
   </div>
 
   <script src="script.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js');
+      });
+    }
+  </script>
 </body>
 </html>
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js');
-    });
-  }
-</script>
