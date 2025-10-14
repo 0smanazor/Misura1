@@ -68,3 +68,17 @@ button:hover {
   margin-top: 15px;
   font-weight: bold;
 }
+/* Giriş ve seçim kutularını hizala */
+input[type="number"],
+select {
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-appearance: none; /* Safari'de okları gizle */
+  appearance: none;
+}
+
+/* Giriş kutusu yüksekliği, select ile eşit olsun */
+input[type="number"] {
+  padding: 10px;
+  font-size: 16px;
+}
