@@ -1,4 +1,9 @@
-﻿const CACHE = "misura-v1";
+// ================================
+// 🧩 Misura Service Worker (v2)
+// ================================
+
+// const CACHE_NAME = "misura-v2";
+const CACHE_NAME = "misura-v3"; // ← sürümü artır
 const ASSETS = [
   "./",
   "./index.html",
@@ -10,29 +15,53 @@ const ASSETS = [
   "./arka_plan.svg"
 ];
 
-self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)));
-});
-
-self.addEventListener("activate", (event) => {
+// 🔹 INSTALL EVENT
+self.addEventListener("install", event => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.map((k) => (k !== CACHE ? caches.delete(k) : null)))
-    )
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      await cache.addAll(ASSETS);
+      self.skipWaiting(); // hemen aktif ol
+    })()
   );
 });
 
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      return (
-        cached ||
-        fetch(event.request).then((resp) => {
-          const copy = resp.clone();
-          caches.open(CACHE).then((cache) => cache.put(event.request, copy)).catch(()=>{});
-          return resp;
-        }).catch(() => cached)
+// 🔹 ACTIVATE EVENT
+self.addEventListener("activate", event => {
+  event.waitUntil(
+    (async () => {
+      const keys = await caches.keys();
+      await Promise.all(
+        keys.map(key => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
       );
-    })
+      self.clients.claim(); // aktif SW hemen kontrol etsin
+    })()
+  );
+});
+
+// 🔹 FETCH EVENT
+self.addEventListener("fetch", event => {
+  // Sadece GET isteklerini ele al (POST istekleri bozulmasın)
+  if (event.request.method !== "GET") return;
+
+  event.respondWith(
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      const cachedResponse = await cache.match(event.request);
+
+      try {
+        // Ağdan getir ve cache’i güncelle
+        const fetchResponse = await fetch(event.request);
+        cache.put(event.request, fetchResponse.clone());
+        return fetchResponse;
+      } catch (error) {
+        // Eğer offline’sa cache’den ver
+        return cachedResponse || new Response("Offline moddasınız.", { status: 503 });
+      }
+    })()
   );
 });
