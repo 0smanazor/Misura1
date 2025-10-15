@@ -1,12 +1,12 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
+/* 🌍 GENEL AYARLAR */
 body {
   background-image: url('arka_plan.svg');
-  background-size: cover;       /* tüm ekranı kapla */
-  background-position: center;  /* ortala */
-  background-repeat: no-repeat; /* tekrarlama */
-  background-attachment: fixed; /* sabitle (sayfa kayarken hareket etmez) */
-
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: 'Montserrat', sans-serif;
   display: flex;
   justify-content: center;
@@ -15,8 +15,7 @@ body {
   margin: 0;
 }
 
-
-
+/* 🔷 CONTAINER */
 .container {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(8px);
@@ -27,31 +26,36 @@ body {
   text-align: center;
 }
 
-
+/* 🔠 BAŞLIKLAR */
 h1 {
   color: #222;
   margin-bottom: 5px;
+  letter-spacing: 1px;
 }
 
 h2 {
   font-size: 14px;
   color: #666;
   margin-bottom: 20px;
+  font-weight: 500;
 }
 
+/* 🔢 GİRİŞLER VE BUTONLAR */
 input, select, button {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   margin-top: 8px;
   border: 1px solid #ddd;
   border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
 }
 
 button {
   background: #1c8eba;
   border: none;
   color: white;
-  font-weight: bold;
+  font-weight: 600;
   border-radius: 8px;
   transition: 0.3s;
   padding: 10px;
@@ -63,22 +67,75 @@ button:hover {
   transform: scale(1.05);
 }
 
-
+/* 🧮 SONUÇ METNİ */
 #result {
   margin-top: 15px;
-  font-weight: bold;
-}
-/* Giriş ve seçim kutularını hizala */
-input[type="number"],
-select {
-  width: 100%;
-  box-sizing: border-box;
-  -webkit-appearance: none; /* Safari'de okları gizle */
-  appearance: none;
+  font-weight: 600;
+  color: #000000;
+  min-height: 20px;
+  transition: 0.3s;
 }
 
-/* Giriş kutusu yüksekliği, select ile eşit olsun */
-input[type="number"] {
-  padding: 10px;
-  font-size: 16px;
+/* 🧩 FORM DÜZENİ */
+.input-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* 🧾 SEÇİM KUTULARI */
+.select-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 48%;
+}
+
+.select-wrapper label {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.55);
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+/* 🌍 DİL BUTONU */
+.lang-switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+#lang-btn {
+  background: #1c8eba;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  width: 45px;
+  height: 32px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+#lang-btn:hover {
+  background: #2563eb;
+  transform: scale(1.05);
+}
+
+/* 📱 MOBİL */
+@media (max-width: 600px) {
+  .container {
+    width: 90%;
+    padding: 25px;
+  }
 }
